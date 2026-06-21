@@ -19,17 +19,17 @@ function Notes() {
   }, [])
 
   const fetchNotes = async () => {
-    const response = await axios.get('http://localhost:5000/api/notes', { headers })
+    const response = await axios.get('https://notes-backend-1n8z.onrender.com/api/notes', { headers })
     setNotes(response.data)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (editId) {
-      await axios.put(`http://localhost:5000/api/notes/${editId}`, { title, body }, { headers })
+      await axios.put(`https://notes-backend-1n8z.onrender.com/api/notes/${editId}`, { title, body }, { headers })
       setEditId(null)
     } else {
-      await axios.post('http://localhost:5000/api/notes', { title, body }, { headers })
+      await axios.post('https://notes-backend-1n8z.onrender.com/api/notes', { title, body }, { headers })
     }
     setTitle('')
     setBody('')
@@ -43,7 +43,7 @@ function Notes() {
   }
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/notes/${id}`, { headers })
+    await axios.delete(`https://notes-backend-1n8z.onrender.com/api/notes/${id}`, { headers })
     fetchNotes()
   }
 
